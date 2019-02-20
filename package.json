@@ -1,0 +1,11 @@
+{
+  "name": "tray_hoover",
+  "version": "1.0.0",
+  "description": "navigates an imaginary robotic hoover through an equally imaginary room",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
