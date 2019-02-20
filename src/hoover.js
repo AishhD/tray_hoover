@@ -3,7 +3,15 @@ const fs = require("fs");
 //synchronously read input
 let data;
 const readFile = () => {
-  data = fs.readFileSync("./input.txt", "utf8");
+  try {
+    data = fs.readFileSync("./input.txt", "utf8");
+  } catch (err) {
+    if (err.code === "ENOENT") {
+      console.log("./input.txt is not found");
+    } else {
+      throw err;
+    }
+  }
   console.log(data);
 };
 
