@@ -1,10 +1,21 @@
 const fs = require("fs");
+const parseInputToState = require("./parseInputToState");
+
+//create a state for the data
+const data = () => {
+  state = {
+    roomDimensions: {},
+    hooverPosition: {},
+    dirtPatches: [],
+    drivingInstructions: []
+  };
+};
 
 //synchronously read input
-let data;
 const readFile = () => {
+  let input;
   try {
-    data = fs.readFileSync("./input.txt", "utf8");
+    input = fs.readFileSync("./input.txt", "utf8");
   } catch (err) {
     if (err.code === "ENOENT") {
       console.log("./input.txt is not found");
@@ -12,7 +23,15 @@ const readFile = () => {
       throw err;
     }
   }
-  console.log(data);
+  return input;
 };
 
-module.exports = readFile;
+const runHoover = () => {
+  //if input file is correctly read run program
+  if (readFile()) {
+    let input = readFile();
+    parseInputToState(input, data.state);
+  }
+};
+
+module.exports = runHoover;

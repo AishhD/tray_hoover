@@ -1,3 +1,3 @@
-const readFile = require("./src/hoover");
+const runHoover = require("./src/hoover");
 
-readFile();
+runHoover();
