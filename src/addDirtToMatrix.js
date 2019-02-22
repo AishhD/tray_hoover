@@ -1,6 +1,6 @@
-const addDirtToMatrix = (originalMatrix, state) => {
+const addDirtToMatrix = (matrix, state) => {
   for (let dirt of state.dirtPatches) {
-    originalMatrix[dirt.x][dirt.y] = "dirt";
+    matrix[dirt.y][dirt.x] = "dirt";
   }
 };
 

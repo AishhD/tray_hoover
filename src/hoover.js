@@ -3,6 +3,7 @@ const fs = require("fs");
 const parseInputToState = require("./parseInputToState");
 const createMatrix = require("./createMatrix");
 const addDirtToMatrix = require("./addDirtToMatrix");
+const moveHoover = require("./moveHoover");
 
 //synchronously read input
 const readFile = () => {
@@ -35,9 +36,9 @@ const runHoover = () => {
   if (readFile()) {
     let fileInput = readFile();
     parseInputToState(fileInput, state);
-    const originalMatrix = createMatrix(state);
-    addDirtToMatrix(originalMatrix, state);
-    console.log(originalMatrix);
+    const matrix = createMatrix(state);
+    addDirtToMatrix(matrix, state);
+    moveHoover(matrix, state);
   }
 };
 
