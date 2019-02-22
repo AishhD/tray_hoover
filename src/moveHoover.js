@@ -28,21 +28,17 @@ const validateMovement = (movement, state, matrix) => {
       state.hooverPosition[coordinate] + direction;
     checkForDirt(state, coordinate, direction, matrix);
   }
+  //if the new position is not within the grid the hoovers current coordinates will not be changed
 };
 
 const moveHoover = (matrix, state) => {
-  console.log("before", state.hooverPosition);
-  console.log("direction", state.drivingInstructions);
-
   //loop over driving instructions, if valid movement hoover & if there is dirt update cleaned count
-
   state.drivingInstructions.forEach(movement => {
     validateMovement(movement, state, matrix);
   });
 
   console.log(state.hooverPosition.x + " " + state.hooverPosition.y);
   console.log(state.cleaned);
-  console.log(matrix);
 };
 
 module.exports = moveHoover;
