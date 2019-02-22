@@ -1,5 +1,8 @@
 const fs = require("fs");
+
 const parseInputToState = require("./parseInputToState");
+const createMatrix = require("./createMatrix");
+const addDirtToMatrix = require("./addDirtToMatrix");
 
 //synchronously read input
 const readFile = () => {
@@ -24,13 +27,17 @@ const runHoover = () => {
     roomDimensions: {},
     hooverPosition: {},
     dirtPatches: [],
-    drivingInstructions: []
+    drivingInstructions: [],
+    cleaned: 0
   };
 
   //if input file can be correctly read
   if (readFile()) {
     let fileInput = readFile();
     parseInputToState(fileInput, state);
+    const originalMatrix = createMatrix(state);
+    addDirtToMatrix(originalMatrix, state);
+    console.log(originalMatrix);
   }
 };
 
