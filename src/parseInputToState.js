@@ -12,11 +12,16 @@ const formatInput = fileInput => {
 
 const parseInputToState = (fileInput, state) => {
   const formattedInputLines = formatInput(fileInput);
-
-  state.roomDimensions = {
-    x: parseInt(formattedInputLines[0][0]),
-    y: parseInt(formattedInputLines[0][1])
-  };
+  // console.log(fileInput.split("/n"));
+  //CHECK!
+  if (/^\d\s\d$/.test(fileInput.split("/n")[0])) {
+    state.roomDimensions = {
+      x: parseInt(formattedInputLines[0][0]),
+      y: parseInt(formattedInputLines[0][1])
+    };
+  } else {
+    throw new Error("invalid input entered");
+  }
 
   state.hooverPosition = {
     x: parseInt(formattedInputLines[1][0]),
