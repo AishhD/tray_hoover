@@ -21,7 +21,7 @@ const isIntegerInGrid = (number, axis, state) => {
     typeof number === "number" &&
     number % 1 === 0 &&
     number >= 0 &&
-    number <= state.roomDimensions[axis]
+    number < state.roomDimensions[axis]
   );
 };
 
@@ -47,10 +47,10 @@ const isStringAInteger = (
   }
 };
 
-const parseInputToState = (fileInput, state) => {
-  const formattedInputLines = formatInput(fileInput);
-  // check if roomDimensions is valid before setting it to state
+const validateRoomDimensionsInput = formattedInputLines => {
+  // check if roomDimensions is valid and only has two numbers in it before setting it to state
   if (
+    formattedInputLines[0].length === 2 &&
     isStringAInteger(formattedInputLines[0][0], "roomDimensions") &&
     isStringAInteger(formattedInputLines[0][1], "roomDimensions")
   ) {
@@ -61,8 +61,12 @@ const parseInputToState = (fileInput, state) => {
   } else {
     throw new Error("Invalid input entered");
   }
+};
 
+const validateHooverPositionInput = formattedInputLines => {
+  // check if hooverPosition is valid and only has two numbers in it before setting it to state
   if (
+    formattedInputLines[1].length === 2 &&
     isStringAInteger(formattedInputLines[1][0], "hooverPosition", "x", state) &&
     isStringAInteger(formattedInputLines[1][1], "hooverPosition", "y", state)
   ) {
@@ -73,10 +77,14 @@ const parseInputToState = (fileInput, state) => {
   } else {
     throw new Error("Invalid input entered");
   }
+};
 
+const validateDirtPatchesInput = formattedInputLines => {
   const findDirtPatches = formattedInputLines.slice(2, -1);
+  // check if dirtPatches is valid and only has two numbers in each line before setting it to state
   state.dirtPatches = findDirtPatches.map(position => {
     if (
+      position.length === 2 &&
       isStringAInteger(position[0], "dirtPatches", "x", state) &&
       isStringAInteger(position[1], "dirtPatches", "y", state)
     ) {
@@ -88,14 +96,26 @@ const parseInputToState = (fileInput, state) => {
       throw new Error("Invalid input entered");
     }
   });
+};
 
+const validatedrivingInstructionsInput = formattedInputLines => {
+  //check the line only includes "N", "E", "S", "W"
   formattedInputLines[formattedInputLines.length - 1].forEach(letter => {
-    if (["N", "E", "S", "W"].includes(letter)) {
+    if (["N", "S", "E", "W"].includes(letter)) {
       state.drivingInstructions.push(letter);
     } else {
       throw new Error("Invalid input entered");
     }
   });
+};
+
+const parseInputToState = (fileInput, state) => {
+  const formattedInputLines = formatInput(fileInput);
+
+  validateRoomDimensionsInput(formattedInputLines);
+  validateHooverPositionInput(formattedInputLines);
+  validateDirtPatchesInput(formattedInputLines);
+  validatedrivingInstructionsInput(formattedInputLines);
 
   return state;
 };
