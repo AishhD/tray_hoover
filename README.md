@@ -12,13 +12,13 @@ Navigates a imaginary robotic hoover (much like a Roomba) through an equally ima
 
 ## Getting Started
 
-To run the program
+To run the program type
 
 ```
 node index.js
 ```
 
-## Run the tests
+## Running the tests
 
 First run
 
