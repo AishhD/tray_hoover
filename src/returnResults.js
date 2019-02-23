@@ -1,6 +1,6 @@
-const endResult = state => {
+const returnResults = state => {
   console.log(state.hooverPosition.x + " " + state.hooverPosition.y);
   console.log(state.cleaned);
 };
 
-module.exports = endResult;
+module.exports = returnResults;
