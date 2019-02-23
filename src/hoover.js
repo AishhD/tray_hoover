@@ -6,10 +6,10 @@ const addDirtToMatrix = require("./addDirtToMatrix");
 const moveHoover = require("./moveHoover");
 const returnResults = require("./returnResults");
 
-//synchronously read input
 const readFile = () => {
   let input;
 
+  //synchronously read input if it the file is there
   try {
     input = fs.readFileSync("./input.txt", "utf8");
   } catch (err) {
@@ -24,7 +24,7 @@ const readFile = () => {
 };
 
 const runHoover = () => {
-  //create a state for the data
+  //create a state for the programs data to be stored in
   state = {
     roomDimensions: {},
     hooverPosition: {},
@@ -33,7 +33,7 @@ const runHoover = () => {
     cleaned: 0
   };
 
-  //if input file can be correctly read
+  //if input file can be correctly read then run the program
   if (readFile()) {
     let fileInput = readFile();
     parseInputToState(fileInput, state);

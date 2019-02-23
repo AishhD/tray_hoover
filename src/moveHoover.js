@@ -1,4 +1,5 @@
 const checkForDirt = (state, coordinate, direction, matrix) => {
+  //if the element has dirt in it update count and set the element to null as it is now cleaned
   if (matrix[state.hooverPosition.y][state.hooverPosition.x] === "dirt") {
     state.cleaned += 1;
     matrix[state.hooverPosition.y][state.hooverPosition.x] = null;
@@ -6,8 +7,7 @@ const checkForDirt = (state, coordinate, direction, matrix) => {
 };
 
 const validateMovement = (movement, state, matrix) => {
-  // updateHooverPosition return a valid value and the x & y position is less than the grid size
-
+  // set each direction type with a value
   const directions = {
     N: 1,
     S: -1,
@@ -32,7 +32,7 @@ const validateMovement = (movement, state, matrix) => {
 };
 
 const moveHoover = (matrix, state) => {
-  //loop over driving instructions, if valid movement hoover & if there is dirt update cleaned count
+  //loop over driving instructions and call the fuction to validate movement
   state.drivingInstructions.forEach(movement => {
     validateMovement(movement, state, matrix);
   });
