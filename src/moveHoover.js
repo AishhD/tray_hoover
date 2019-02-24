@@ -6,7 +6,7 @@ const checkForDirt = (state, coordinate, direction, matrix) => {
   }
 };
 
-const validateMovement = (movement, state, matrix) => {
+const applyMovement = (movement, state, matrix) => {
   // set each direction type with a value
   const directions = {
     N: 1,
@@ -34,7 +34,7 @@ const validateMovement = (movement, state, matrix) => {
 const moveHoover = (matrix, state) => {
   //loop over driving instructions and call the fuction to validate movement
   state.drivingInstructions.forEach(movement => {
-    validateMovement(movement, state, matrix);
+    applyMovement(movement, state, matrix);
   });
 
   //return both for testing purposes
