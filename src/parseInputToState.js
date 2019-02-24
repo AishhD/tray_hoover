@@ -58,7 +58,7 @@ const isStringAInteger = (
   }
 };
 
-const validateRoomDimensionsInput = (formattedInputLines, state) => {
+const parseRoomDimensions = (formattedInputLines, state) => {
   // check if roomDimensions is valid and only has two numbers in it before setting it to state
   if (
     formattedInputLines[0].length === 2 &&
@@ -74,7 +74,7 @@ const validateRoomDimensionsInput = (formattedInputLines, state) => {
   }
 };
 
-const validateHooverPositionInput = (formattedInputLines, state) => {
+const parseHooverPosition = (formattedInputLines, state) => {
   // check if hooverPosition is valid and only has two numbers in it before setting it to state
   if (
     formattedInputLines[1].length === 2 &&
@@ -90,7 +90,7 @@ const validateHooverPositionInput = (formattedInputLines, state) => {
   }
 };
 
-const validateDirtPatchesInput = (formattedInputLines, state) => {
+const parseDirtPatches = (formattedInputLines, state) => {
   const findDirtPatches = formattedInputLines.slice(2, -1);
   // check if dirtPatches is valid and only has two numbers in each line before setting it to state
   state.dirtPatches = findDirtPatches.map(position => {
@@ -109,7 +109,7 @@ const validateDirtPatchesInput = (formattedInputLines, state) => {
   });
 };
 
-const validatedrivingInstructionsInput = (formattedInputLines, state) => {
+const parseDrivingInstructions = (formattedInputLines, state) => {
   //check the line only includes "N", "E", "S", "W"
   formattedInputLines[formattedInputLines.length - 1].forEach(letter => {
     if (["N", "S", "E", "W"].includes(letter)) {
@@ -124,10 +124,10 @@ const parseInputToState = (fileInput, state) => {
   const formattedInputLines = formatInput(fileInput);
 
   //validates input before setting it to state
-  validateRoomDimensionsInput(formattedInputLines, state);
-  validateHooverPositionInput(formattedInputLines, state);
-  validateDirtPatchesInput(formattedInputLines, state);
-  validatedrivingInstructionsInput(formattedInputLines, state);
+  parseRoomDimensions(formattedInputLines, state);
+  parseHooverPosition(formattedInputLines, state);
+  parseDirtPatches(formattedInputLines, state);
+  parseDrivingInstructions(formattedInputLines, state);
 
   return state;
 };
