@@ -25,7 +25,7 @@ const readFile = () => {
 
 const runHoover = () => {
   //create a state for the programs data to be stored in
-  state = {
+  let state = {
     roomDimensions: {},
     hooverPosition: {},
     dirtPatches: [],

@@ -3,6 +3,7 @@ const addDirtToMatrix = (matrix, state) => {
   for (let dirt of state.dirtPatches) {
     matrix[dirt.y][dirt.x] = "dirt";
   }
+  return matrix;
 };
 
 module.exports = addDirtToMatrix;

@@ -36,6 +36,9 @@ const moveHoover = (matrix, state) => {
   state.drivingInstructions.forEach(movement => {
     validateMovement(movement, state, matrix);
   });
+
+  //return both for testing purposes
+  return [matrix, state];
 };
 
 module.exports = moveHoover;

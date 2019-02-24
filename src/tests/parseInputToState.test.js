@@ -1,7 +1,7 @@
 const parseInputToState = require("../parseInputToState");
 
 describe("check input is correctly set to state where appropiate", () => {
-  state = {
+  let state = {
     roomDimensions: {},
     hooverPosition: {},
     dirtPatches: [],
@@ -12,7 +12,7 @@ describe("check input is correctly set to state where appropiate", () => {
   test("correct input is set to state", () => {
     const input = "5 5\n1 3\n1 0\n2 2\n2 3\nNNESEESWNWW";
 
-    returnedState = {
+    const returnedState = {
       roomDimensions: { x: 5, y: 5 },
       hooverPosition: { x: 1, y: 3 },
       dirtPatches: [{ x: 1, y: 0 }, { x: 2, y: 2 }, { x: 2, y: 3 }],

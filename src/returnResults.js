@@ -1,5 +1,6 @@
 const returnResults = state => {
-  console.log(state.hooverPosition.x + " " + state.hooverPosition.y);
+  const hooverPosition = state.hooverPosition.x + " " + state.hooverPosition.y;
+  console.log(hooverPosition);
   console.log(state.cleaned);
 };
 
