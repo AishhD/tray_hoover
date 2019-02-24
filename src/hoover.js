@@ -5,7 +5,8 @@ const addDirtToMatrix = require("./addDirtToMatrix");
 const moveHoover = require("./moveHoover");
 const returnResults = require("./returnResults");
 
-const runHoover = () => {
+//(readInputFunc = readInput) passed as argument for testing
+const runHoover = (readInputFunc = readInput) => {
   //create a state for the programs data to be stored in
   let state = {
     roomDimensions: {},
@@ -15,9 +16,10 @@ const runHoover = () => {
     cleaned: 0
   };
 
+  let fileInput = readInputFunc();
+
   //if input file can be correctly read then run the program
-  if (readInput()) {
-    let fileInput = readInput();
+  if (fileInput) {
     parseInputToState(fileInput, state);
     const matrix = createMatrix(state);
     addDirtToMatrix(matrix, state);
