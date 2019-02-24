@@ -1,4 +1,4 @@
-const checkForDirt = (state, coordinate, direction, matrix) => {
+const updateIfDirty = (state, matrix) => {
   //if the element has dirt in it update count and set the element to null as it is now cleaned
   if (matrix[state.hooverPosition.y][state.hooverPosition.x] === "dirt") {
     state.cleaned += 1;
@@ -16,17 +16,17 @@ const applyMovement = (movement, state, matrix) => {
   };
 
   const coordinate = movement === "N" || movement === "S" ? "y" : "x";
-  const direction = directions[movement];
+  const movementAmount = directions[movement];
 
   //checking the new x or position is within the grid
   if (
-    state.hooverPosition[coordinate] + direction >= 0 &&
-    state.hooverPosition[coordinate] + direction <
+    state.hooverPosition[coordinate] + movementAmount >= 0 &&
+    state.hooverPosition[coordinate] + movementAmount <
       state.roomDimensions[coordinate]
   ) {
     state.hooverPosition[coordinate] =
-      state.hooverPosition[coordinate] + direction;
-    checkForDirt(state, coordinate, direction, matrix);
+      state.hooverPosition[coordinate] + movementAmount;
+    updateIfDirty(state, matrix);
   }
   //if the new position is not within the grid the hoovers current coordinates will not be changed
 };
