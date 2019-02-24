@@ -112,6 +112,7 @@ const validatedrivingInstructionsInput = formattedInputLines => {
 const parseInputToState = (fileInput, state) => {
   const formattedInputLines = formatInput(fileInput);
 
+  //validates input before setting it to state
   validateRoomDimensionsInput(formattedInputLines);
   validateHooverPositionInput(formattedInputLines);
   validateDirtPatchesInput(formattedInputLines);
