@@ -18,6 +18,8 @@ To run the program type
 node index.js
 ```
 
+To update the input, you will have update the input.txt file and change the test code accordingly.
+
 ## Running the tests
 
 First run
