@@ -10,13 +10,18 @@ const formatInput = fileInput => {
   return splitLineXY;
 };
 
+const isEmptyString = string => {
+  //Number("") = 0 so empty string validation done before changing it to a number
+  return string === "" ? false : true;
+};
+
 const isInteger = number => {
-  //validates against null, undefined, infinity, negative number, and grid size is greater than 0
+  //validates against null, infinity, negative number, float and grid size is greater than 0
   return typeof number === "number" && number % 1 === 0 && number > 0;
 };
 
 const isIntegerInGrid = (number, axis, state) => {
-  //validates against null, undefined, infinity, negative number & a number greater than the grid size
+  //validates against null, infinity, negative number, float & a number greater than the grid size
   return (
     typeof number === "number" &&
     number % 1 === 0 &&
@@ -34,13 +39,19 @@ const isStringAInteger = (
   //changes the string to number and call the appropriate validation method
   switch (lineType) {
     case "roomDimensions":
-      return isInteger(Number(string));
+      if (isEmptyString(string)) {
+        return isInteger(Number(string));
+      }
       break;
     case "hooverPosition":
-      return isIntegerInGrid(Number(string), axis, state);
+      if (isEmptyString(string)) {
+        return isIntegerInGrid(Number(string), axis, state);
+      }
       break;
     case "dirtPatches":
-      return isIntegerInGrid(Number(string), axis, state);
+      if (isEmptyString(string)) {
+        return isIntegerInGrid(Number(string), axis, state);
+      }
       break;
     default:
       return false;
