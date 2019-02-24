@@ -1,8 +1,8 @@
 const addDirtToMatrix = (matrix, state) => {
   //iterate through patches of dirt adding to matrix
-  for (let dirt of state.dirtPatches) {
+  state.dirtPatches.forEach(dirt => {
     matrix[dirt.y][dirt.x] = "dirt";
-  }
+  });
   return matrix;
 };
 
