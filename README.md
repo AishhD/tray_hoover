@@ -41,6 +41,10 @@ If all tests haven't run enter
 a
 ```
 
+## Layout
+
+The code is split into separate files for separation of concerns. As classes would not have added to the program I have not used a class based system.
+
 ## Built With
 
 - [Node.js](https://nodejs.org/en/) - JavaScript runtime for building fast network applications.
