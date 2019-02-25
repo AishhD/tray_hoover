@@ -24,12 +24,16 @@ describe("console log results", () => {
   test("it console logs the position of the hoover", () => {
     console.log = jest.fn(returnResults(state));
     log = jest.fn(returnResults(state));
-    expect(console.log).toHaveBeenCalledWith("1 3");
+    expect(console.log).toHaveBeenCalledWith(
+      "The final hoover position is: x:1, y:3."
+    );
   });
 
   test("it console logs the number of patches cleaned", () => {
     console.log = jest.fn(returnResults(state));
     log = jest.fn(returnResults(state));
-    expect(console.log).toHaveBeenCalledWith(1);
+    expect(console.log).toHaveBeenCalledWith(
+      "The number of patches cleaned is: 1"
+    );
   });
 });
