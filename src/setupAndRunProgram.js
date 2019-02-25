@@ -5,7 +5,7 @@ const addDirtToMatrix = require("./addDirtToMatrix");
 const moveHoover = require("./moveHoover");
 const returnResults = require("./returnResults");
 
-const runHoover = () => {
+const setupAndRun = () => {
   //create a state for the programs data to be stored in
   let state = {
     roomDimensions: {},
@@ -26,4 +26,4 @@ const runHoover = () => {
   }
 };
 
-module.exports = runHoover;
+module.exports = setupAndRun;

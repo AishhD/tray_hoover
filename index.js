@@ -1,3 +1,3 @@
-const runHoover = require("./src/hoover");
+const setupAndRun = require("./src/setupAndRunProgram");
 
-runHoover();
+setupAndRun();
