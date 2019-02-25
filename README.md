@@ -23,6 +23,22 @@ node index.js
 
 To update the input, you will have to update the input.txt file and change the test code accordingly. As the bottom left corner is defined by X: 0 and Y: 0 all the coordinates must be less than the grid size.
 
+Example input:
+
+```
+5 5
+1 2
+1 0
+2 2
+2 3
+NNESEESWNWW
+```
+
+- the first line holds the room dimensions (X Y), separated by a single space (all coordinates will be presented in this format)
+- the second line holds the hoover position
+- subsequent lines contain the zero or more positions of patches of dirt (one per line)
+- the next line then always contains the driving instructions (at least one)
+
 ## Running the tests
 
 First run
